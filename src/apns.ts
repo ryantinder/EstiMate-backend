@@ -26,5 +26,5 @@ export const sendAPNS = async (myDeviceToken: string, alert: string, name: strin
     note.alert = alert;
     note.topic = "com.zhuhaoyu.EstiMate";
 
-    apnProvider.send(note, deviceToken).then(console.log)
+    await apnProvider.send(note, deviceToken).then(console.log)
 }
