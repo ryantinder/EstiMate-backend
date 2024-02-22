@@ -1,11 +1,16 @@
 import apn from 'node-apn-http2'
 import fs from 'fs'
+
+if (!fs.existsSync(`${__dirname}/mnt/AuthKey.p8`)) {
+    fs.writeFileSync(`${__dirname}/mnt/AuthKey.p8`, process.env.APNS_AUTH_KEY!, 'utf8')
+}
+
 export const sendAPNS = async (myDeviceToken: string, alert: string, name: string, type: string, data: any) => {
 
     console.log("sending apns", myDeviceToken)
     var options = {
         token: {
-            key: fs.readFileSync(`${__dirname}/AuthKey.p8`),
+            key: fs.readFileSync(`${__dirname}/mnt/AuthKey.p8`),
             keyId: process.env.APNS_KEY_ID!,
             teamId: process.env.APNS_TEAM_ID!
         },

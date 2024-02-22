@@ -21,3 +21,4 @@ broadcast/
 
 !out/BetFactory.sol/
 !out/Bet.sol/
+pre-deploy.ts

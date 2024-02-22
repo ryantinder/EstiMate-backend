@@ -137,6 +137,13 @@ app.get("/get-balance/:id", async (req, res) => {
     }
 })
 
+app.post("/send-apns", async (req, res) => {
+    const { deviceToken } = req.body;
+    console.log("sending apns", deviceToken)
+    const result = await sendAPNS(deviceToken, "test", "test", "test", {});
+    res.status(200).send('Success')
+})
+
 app.listen(3000, () => {
     console.log("app listening...")
 })
