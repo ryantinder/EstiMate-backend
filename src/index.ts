@@ -144,6 +144,10 @@ app.post("/send-apns", async (req, res) => {
     res.status(200).send('Success')
 })
 
-app.listen(3000, () => {
+app.get("/test", async (req, res) => {
+    res.status(200).send('Success')
+})
+
+app.listen(process.env.PORT || 3333, () => {
     console.log("app listening...")
 })
